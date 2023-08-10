@@ -1,0 +1,7 @@
+*.swp
+*.exe
+*.out
+*.o
+.vscode/
+build/
+git_diff.txt
