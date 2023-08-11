@@ -48,6 +48,7 @@ $$T(n) = c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n 
 The **best case** occurs when the array is already sorted. In this case, each time that line 5 executes, the value of key ($A[i]$ origin value) is already greater than or equal all values in $A[0:i - 1]$, so that the while loop of lines 5-7 always exits upon the first test in line 5. Therefore $t_{\scriptstyle i} = 1$ for $i = 1,2,...,n$
 
 Best-case running time:
+
 $$
 \begin{align*}
 T(n) &= c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n - 1) + c_{\scriptstyle 5}(n - 1) + c_{\scriptstyle 8}(n - 1) \\
