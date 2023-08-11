@@ -65,7 +65,7 @@ T(n) &= c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n -
 \end{align*}
 $$
 
-The running is a **quadratic function** of $n$
+The worst-case running time is a **quadratic function** of $n$
 
 ## Test Drive
 The test is designed to implement 3 cases:
