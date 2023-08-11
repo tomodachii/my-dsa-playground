@@ -1,1 +1,2 @@
-# my-dsa-playground
+# My Data structures and Algorithms Playground
+This repository serves as a practical resource to aid my personal study and understanding of the fundamental concepts in ```"Introduction to Algorithms" by Cormen, Leiserson, Rivest, and Stein (2001)``` with the goal is to implementing various algorithms from the book.
