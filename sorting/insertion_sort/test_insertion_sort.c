@@ -1,8 +1,9 @@
-#include "insertion_sort.h"
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <assert.h>
+
+#include "insertion_sort.h"
 
 void test_insertion_sort(int A[], const char *case_name) {
     int A_solution[] = {1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9, 10, 15};
@@ -10,8 +11,7 @@ void test_insertion_sort(int A[], const char *case_name) {
 
     printf("%s\n", case_name);
     printf(" - Unsorted array: ");
-    for (int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++) {
         printf("%d ", A[i]);
     }
 
@@ -27,8 +27,7 @@ void test_insertion_sort(int A[], const char *case_name) {
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 
     printf("\n - Sorted array: ");
-    for (int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++) {
         printf("%d ", A[i]);
     }
     printf("\n");
@@ -40,8 +39,7 @@ void test_insertion_sort(int A[], const char *case_name) {
     printf(" - %s Time taken: %.8f seconds\n", case_name, elapsed_time);
 }
 
-int main()
-{
+int main() {
     printf("Insertion sort Test Drive");
     int A_average_case[] = {5, 2, 9, 1, 5, 6, 8, 10, 7, 3, 4, 15, 9};
     int A_best_case[] = {1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9, 10, 15};
