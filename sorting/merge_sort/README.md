@@ -1,5 +1,5 @@
 # Merge sort
-Sort a subarray $A[p:r]$, starting with the entire array $A[0:n - 1], recursing down to smaller and smaller subarrays (starting array $A[0:n]$ will be divided to a point when it becomes $A[p:r]$)
+Sort a subarray $A[p:r]$, starting with the entire array $A[0:n-1]$, recursing down to smaller and smaller subarrays (the starting array $A[0:n-1]$ will be divided to a point when it becomes $A[p:r]$)
  - **Divide** $A[p:r]$ into $A[p:q]$ and $A[q+1:r]$ with $q$ is the midpoint of $A[p:r]$
  - **Conquer** by sorting $A[p:q]$ and $A[q+1:r]$ recursively using merge sort
  - **Combine** (Merge) by merging 2 sorted subarray $A[p:q]$ and $A[q + 1:r]$ back into $A[p:r]$
