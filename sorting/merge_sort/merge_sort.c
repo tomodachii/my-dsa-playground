@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void merge(int *A, int p, int q, int r) {
-    int n_l = p - q + 1;  // length of A[p:q]
+    int n_l = q - p + 1;  // length of A[p:q]
     int n_r = r - q;      // length of A[q + 1:r]
     int *L = (int *)malloc(n_l * sizeof(int));
     int *R = (int *)malloc(n_r * sizeof(int));
@@ -13,8 +13,8 @@ void merge(int *A, int p, int q, int r) {
         L[i] = A[p + i];
     }
     // copy A[q + 1:r] into R[0:n_r - 1]
-    for (int i = 0; i < n_l; i++) {
-        R[i] = A[p + i + 1];
+    for (int j = 0; j < n_r; j++) {
+        R[j] = A[q + j + 1];
     }
     int i = 0;  // i indexes the smallest remaining element in L
     int j = 0;  // j indexes the smallest remaining element in R
@@ -44,7 +44,7 @@ void merge(int *A, int p, int q, int r) {
         k = k + 1;
     }
     while (j < n_r) {
-        A[k] = L[j];
+        A[k] = R[j];
         j = j + 1;
         k = k + 1;
     }

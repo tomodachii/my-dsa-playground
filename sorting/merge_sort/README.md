@@ -1,8 +1,8 @@
 # Merge sort
-Sort a subarray $A[p:r]$, starting with the entire array $A[0:n], recursing down to smaller and smaller subarrays (starting array $A[0:n]$ will be divided to a point when it becomes $A[p:r]$)
+Sort a subarray $A[p:r]$, starting with the entire array $A[0:n-1]$, recursing down to smaller and smaller subarrays (the starting array $A[0:n-1]$ will be divided to a point when it becomes $A[p:r]$)
  - **Divide** $A[p:r]$ into $A[p:q]$ and $A[q+1:r]$ with $q$ is the midpoint of $A[p:r]$
  - **Conquer** by sorting $A[p:q]$ and $A[q+1:r]$ recursively using merge sort
- - **Combine** (Merge) by merging 2 sorted subarray $A[p:q]$ and $A[q+1:r]$ back into $A[p:r]$
+ - **Combine** (Merge) by merging 2 sorted subarray $A[p:q]$ and $A[q + 1:r]$ back into $A[p:r]$
 
 ## Psuedo Code and Analysis
 I really love the ```MERGE procedure``` explanation in the book
@@ -136,3 +136,19 @@ lgn + 1        |     |         |     |
 Since we're assuming that n is an exact power of 2, the number of levels of a recursion tree with $2^i$ leaves is $log_2 2^i + 1$
 
 The levels above the leaves each cost $c_{\scriptstyle 2}n$, and the leaf level costs $c_{\scriptstyle 1}n$, for a total cost of $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \theta(n\log_2 n)$
+> As the input size n becomes large, the logarithmic term will dominate the linear term ($c_{\scriptstyle 1}n$). Hence $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \theta(n\log_2 n)$
+
+The merging step always takes $\theta(n)$ time, no matter the specific elements being merged, because it involves comparing and copying each element exactly once from the two subarrays to the merged result. This is why the worst-case time complexity for merge sort is determined by the number of merge operations, which is proportional to the depth of the recursion tree (which is $\log_2 n$). Therefore the worst-case time complexity is $\theta(n\log_2 n)$
+
+## Test Drive
+Since this algorithm run time complexity depends on the depth of the recursion tree (input quantity), the test drive will be simple (taken from the famous github Algorithm/C repo)
+
+You can give merge_sort a test drive using Makefile
+```
+make test
+```
+
+To clean up the mess:
+```
+make clean
+```
