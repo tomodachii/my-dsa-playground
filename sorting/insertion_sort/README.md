@@ -7,9 +7,9 @@ Insertion sort works the way you might sort a hand of playing cards
 ## Pseudocode
 ```
 INSERTION-SORT(A, n)
-1    for i = 1 to n
+1    for i = 2 to n
 2        key = A[i]
-3        // Insert A[i] into the sorted subarray A[0:i - 1]
+3        // Insert A[i] into the sorted subarray A[1:i - 1]
 4        j = i - 1
 5        while j > 0 and A[j] > key
 6            A[j + 1] = A[j]
@@ -43,7 +43,7 @@ $c_{\scriptstyle k}$: number of steps to execute statement $k$
 $t_{\scriptstyle t}$: the number of times the while loop executed for that value of $i$ ($i = 2,3,...,n$)
 
 The running time of insertion sort on an input of $n$ values:
-$$T(n) = c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n - 1) + c_{\scriptstyle 5}\sum_{i=1}^{n}t_{\scriptstyle i} + c_{\scriptstyle 6}\sum_{i=1}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 7}\sum_{i=1}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 8}(n - 1)$$
+$$T(n) = c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n - 1) + c_{\scriptstyle 5}\sum_{i=2}^{n}t_{\scriptstyle i} + c_{\scriptstyle 6}\sum_{i=2}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 7}\sum_{i=2}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 8}(n - 1)$$
 
 The **best case** occurs when the array is already sorted. In this case, each time that line 5 executes, the value of key ($A[i]$ origin value) is already greater than or equal all values in $A[0:i - 1]$, so that the while loop of lines 5-7 always exits upon the first test in line 5. Therefore $t_{\scriptstyle i} = 1$ for $i = 1,2,...,n$
 
@@ -56,6 +56,8 @@ T(n) &= c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n -
 \end{align*}
 $$
 
+Best-case running time of the algorithm is $\Theta(n)$
+
 The **worst case** arises when the array is in reverse sorted order. The procedure must compare each element $A[i]$ with each element in the entire sorted subarray $A[0:i - 1]$. The procedure find that $A[j] > key$ every time in line 5, and the while loop exits only when $j$ reaches 0 so $t_{\scriptstyle i} = i$ for $i = 2,3,...,n$
 
 $$
@@ -65,7 +67,9 @@ T(n) &= c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n -
 \end{align*}
 $$
 
-The worst-case running time is a **quadratic function** of $n$
+The worst-case running time is a **quadratic function** of $n$ or we can say $\Theta(n^2)$
+
+So we can abuse the notations and say that the running time of the algorithm is $\Omega(n)$ and $\mathcal{O}(n^2)$
 
 ## Test Drive
 The test is designed to implement 3 cases:

@@ -48,10 +48,10 @@ MERGE(A, p, q, r)
 27      k = k + 1
 ```
 
-MERGE procedure runs in $\theta(n)$ time, where $n = r - p + 1$:
+MERGE procedure runs in $\Theta(n)$ time, where $n = r - p + 1$:
  - Lines 1-3 and 8-10 takes constant time
- - The for loops of lines 4-7 take $\theta(n_{\scriptstyle L} + n_{\scriptstyle R}) = \theta(n)$ time
- - All 3 while loops of lines 12-27 will eventually copies all items from L and R back into A and every value is copied exactly once. Therefore, total time spent in these loops is $\theta(n)$
+ - The for loops of lines 4-7 take $\Theta(n_{\scriptstyle L} + n_{\scriptstyle R}) = \Theta(n)$ time
+ - All 3 while loops of lines 12-27 will eventually copies all items from L and R back into A and every value is copied exactly once. Therefore, total time spent in these loops is $\Theta(n)$
 
 The procedure MERGE-SORT(A, p, r) sorts the elements in the subarray $A[p:r]$
  - If $p = r$, the subarray has just 1 element and therefore is sorted
@@ -68,8 +68,8 @@ MERGE-SORT(A, p, r)
 ```
 
 ### Analysis of Divide-and-conquer
-let $T(n)$ be the worst-case running time on a problem of size $n$. If the problem size is small enough, say $n < n_{\scriptstyle 0}$ ($n_{\scriptstyle 0} > 0$), the *straightforward solution* take contsant time $\theta(1)$ 
-> This does not imply that the running time is literally 1 unit, it means the something rather than divide-and-conquer, for example, with small unsorted array, insertion sort might be better (straightforward solution) and will take constant $c$ time which is $\theta(1)$
+let $T(n)$ be the worst-case running time on a problem of size $n$. If the problem size is small enough, say $n < n_{\scriptstyle 0}$ ($n_{\scriptstyle 0} > 0$), the *straightforward solution* take contsant time $\Theta(1)$ 
+> This does not imply that the running time is literally 1 unit, it means the something rather than divide-and-conquer, for example, with small unsorted array, insertion sort might be better (straightforward solution) and will take constant $c$ time which is $\Theta(1)$
 
 Suppose that the division of the problem yields $a$ subproblems, each with size $n/b$, that is, $1/b$ the size of the original.
 - $D(n)$ time to to divide the problem into subproblem
@@ -80,24 +80,24 @@ Suppose that the division of the problem yields $a$ subproblems, each with size 
 $$
 T(n) = 
 \begin{cases}
-    \theta(1) &\text{if}\, n < n_{\scriptstyle 0},\\
+    \Theta(1) &\text{if}\, n < n_{\scriptstyle 0},\\
     D(n) + aT(n/b) + C(n) &\text{otherwise}.
 \end{cases}
 $$
 
 ### Analysis of Merge sort
-- **Divide:** The divide step just computes the middle of the subarray, which takes constant time. Thus, $D(n) = \theta(1)$
+- **Divide:** The divide step just computes the middle of the subarray, which takes constant time. Thus, $D(n) = \Theta(1)$
 - **Conquer:** Since both $a$ (subproblems) and $b$ ($1/b$ is the size of the subproblem) are 2, recursively solving two subproblems, each of size $n/2$, contributes $2T(n/2)$ to the running time
-- **Combine:** Since the MERGE procedure on an $n$-element subarray and for merge sort, takes $\theta(n)$ time, we have $C(n) = \theta(n)$
+- **Combine:** Since the MERGE procedure on an $n$-element subarray and for merge sort, takes $\Theta(n)$ time, we have $C(n) = \Theta(n)$
 
-As big O notation focuses on the growth rate of the function as the input size becomes large, we can ignore $\theta(1)$
+As big O notation focuses on the growth rate of the function as the input size becomes large, we can ignore $\Theta(1)$
 $$
 \begin{align*}
-T(n) = 2T(n/2) + \theta(n)
+T(n) = 2T(n/2) + \Theta(n)
 \end{align*}
 $$
 
-$T(n) = \theta(n\log_2 n)$. To understand in intuitively why, for simplicity, assume that n is an exact power of 2 and that the implicit base case is $n = 1$
+$T(n) = \Theta(n\log_2 n)$. To understand in intuitively why, for simplicity, assume that n is an exact power of 2 and that the implicit base case is $n = 1$
 $$
 T(n) = 
 \begin{cases}
@@ -135,10 +135,10 @@ lgn + 1        |     |         |     |
 ```
 Since we're assuming that n is an exact power of 2, the number of levels of a recursion tree with $2^i$ leaves is $log_2 2^i + 1$
 
-The levels above the leaves each cost $c_{\scriptstyle 2}n$, and the leaf level costs $c_{\scriptstyle 1}n$, for a total cost of $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \theta(n\log_2 n)$
-> As the input size n becomes large, the logarithmic term will dominate the linear term ($c_{\scriptstyle 1}n$). Hence $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \theta(n\log_2 n)$
+The levels above the leaves each cost $c_{\scriptstyle 2}n$, and the leaf level costs $c_{\scriptstyle 1}n$, for a total cost of $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \Theta(n\log_2 n)$
+> As the input size n becomes large, the logarithmic term will dominate the linear term ($c_{\scriptstyle 1}n$). Hence $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \Theta(n\log_2 n)$
 
-The merging step always takes $\theta(n)$ time, no matter the specific elements being merged, because it involves comparing and copying each element exactly once from the two subarrays to the merged result. This is why the worst-case time complexity for merge sort is determined by the number of merge operations, which is proportional to the depth of the recursion tree (which is $\log_2 n$). Therefore the worst-case time complexity is $\theta(n\log_2 n)$
+The merging step always takes $\Theta(n)$ time, no matter the specific elements being merged, because it involves comparing and copying each element exactly once from the two subarrays to the merged result. This is why the worst-case time complexity for merge sort is determined by the number of merge operations, which is proportional to the depth of the recursion tree (which is $\log_2 n$). Therefore the worst-case time complexity is $\Theta(n\log_2 n)$
 
 ## Test Drive
 Since this algorithm run time complexity depends on the depth of the recursion tree (input quantity), the test drive will be simple (taken from the famous github Algorithm/C repo)
