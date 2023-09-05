@@ -1,4 +1,5 @@
 #include "matrix_operations.h"
+#include "matrix_utils.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,21 +11,9 @@ int main() {
     printf("Enter the size of matrices: ");
     scanf("%d", &n);
 
-    // int A[MAX_SIZE][MAX_SIZE], B[MAX_SIZE][MAX_SIZE], C[MAX_SIZE][MAX_SIZE];
-    int **A = (int **)malloc(n * sizeof(int *));
-    for (int i = 0; i < n; i++) {
-        A[i] = (int *)malloc(n * sizeof(int));
-    }
-
-    int **B = (int **)malloc(n * sizeof(int *));
-    for (int i = 0; i < n; i++) {
-        B[i] = (int *)malloc(n * sizeof(int));
-    }
-
-    int **C = (int **)malloc(n * sizeof(int *));
-    for (int i = 0; i < n; i++) {
-        C[i] = (int *)malloc(n * sizeof(int));
-    }
+    int **A = allocate_matrix(n, n);
+    int **B = allocate_matrix(n, n);
+    int **C = allocate_matrix(n, n);
 
     printf("Enter the elements of matrix A:\n");
     for (int i = 0; i < n; i++) {
@@ -52,7 +41,8 @@ int main() {
         printf("\n");
     }
 
-    square_matrix_multiply(A, B, C, n);
+    square_matrix_multiply_recursive(A, B, C, n);
+    // square_matrix_add(A, B, C, n);
 
     printf("Resultant matrix C:\n");
     for (int i = 0; i < n; i++) {
