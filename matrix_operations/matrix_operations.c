@@ -86,6 +86,21 @@ void square_matrix_multiply_recursive(int **A, int **B, int **C, int n) {
             C[i + n / 2][j + n / 2] = C22[i][j];
         }
     }
+
+    free(A11);
+    free(A12);
+    free(A21);
+    free(A22);
+    free(B11);
+    free(B12);
+    free(B21);
+    free(B22);
+    free(C11);
+    free(C12);
+    free(C21);
+    free(C22);
+    free(temp1);
+    free(temp2);
 }
 
 
