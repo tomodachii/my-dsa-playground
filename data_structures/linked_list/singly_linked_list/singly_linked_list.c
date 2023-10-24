@@ -22,7 +22,7 @@ void _sll_get_node_data(Node node, void (*print_data_function)(Data))
   print_data_function(node->data);
 }
 
-SinglyLinkedList *sll_print(Node *head, void (*print_data_function)(Data))
+SinglyLinkedList *sll_print(Node head, void (*print_data_function)(Data))
 {
   int num = 1;
   Node temp = NULL;
