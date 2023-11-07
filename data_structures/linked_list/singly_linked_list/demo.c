@@ -35,13 +35,16 @@ int main()
   strcpy(phone2.model, "Samsung Galaxy S21");
   phone2.price = 899;
 
-  Node head = NULL;
+  SinglyLinkedList my_list;
+  sll_init(&my_list);
 menu:
 {
   printf("   MENU\n");
   printf(" 1. Prepend\n");
   printf(" 2. Print\n");
   printf(" 3. Search\n");
+  printf(" 4. Delete\n");
+  printf("Any other keys: Quit Program\n");
   int c;
   printf("Your selection : ");
   scanf("%d", &c);
@@ -52,7 +55,7 @@ menu:
   case 1:
   {
     printf("\n");
-    sll_prepend(&head, &phone1);
+    sll_prepend(&my_list, &phone1);
     printf("____________________________________________\n");
     goto menu;
     ;
@@ -60,7 +63,7 @@ menu:
   case 2:
   {
     printf("\n");
-    sll_print(head, print_phone_data_function);
+    sll_print(my_list, print_phone_data_function);
     printf("____________________________________________\n");
     goto menu;
     ;
@@ -69,8 +72,19 @@ menu:
   {
     printf("\n");
     Node temp = NULL;
-    temp = sll_search(head, "iPhone 13 Pro", search_phone_by_model);
+    temp = sll_search(my_list, "iPhone 13 Pro", search_phone_by_model);
     sll_get_node_data(temp, print_phone_data_function);
+    printf("____________________________________________\n");
+    goto menu;
+    ;
+  }
+  case 4:
+  {
+    printf("\n");
+    Node temp = NULL;
+    temp = sll_search(my_list, "iPhone 13 Pro", search_phone_by_model);
+    sll_get_node_data(temp, print_phone_data_function);
+    sll_delete(&my_list, temp);
     printf("____________________________________________\n");
     goto menu;
     ;

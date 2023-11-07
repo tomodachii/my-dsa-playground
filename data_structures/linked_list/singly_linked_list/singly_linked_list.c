@@ -3,6 +3,12 @@
 #include <string.h>
 #include "singly_linked_list.h"
 
+// if we pass list instead of the SinglyLinkedList pointer *list, the list.head = NULL; will not set the head of the list to NULL since it is passed by value
+void sll_init(SinglyLinkedList *list)
+{
+  list->head = NULL;
+}
+
 Node _sll_make_new_node(Data data)
 {
   Node new_node = NULL;
@@ -19,40 +25,44 @@ Node _sll_make_new_node(Data data)
 
 void sll_get_node_data(Node node, void (*print_data_function)(Data))
 {
-  print_data_function(node->data);
+  if (node != NULL) {
+    print_data_function(node->data);
+  } else {
+    printf(" (!) No data\n");
+  }
 }
 
-SinglyLinkedList *sll_print(Node head, void (*print_data_function)(Data))
+void sll_print(SinglyLinkedList list, void (*print_data_function)(Data))
 {
   int num = 1;
   Node temp = NULL;
-  temp = head;
+  temp = list.head;
   while (temp != NULL)
   {
-    print_data_function(temp->data);
+    sll_get_node_data(temp, print_data_function);
     temp = temp->next;
     num++;
   }
 }
 
-SinglyLinkedList *sll_prepend(Node *head, Data data)
+Node sll_prepend(SinglyLinkedList *list, Data data)
 {
   Node new_node = _sll_make_new_node(data);
-  if (*head == NULL)
+  if (list->head == NULL)
   {
-    *head = new_node;
+    list->head = new_node;
   }
   else
   {
-    new_node->next = *head;
-    *head = new_node;
+    new_node->next = list->head;
+    list->head = new_node;
   }
-  return *head;
+  return list->head;
 }
 
-SinglyLinkedList *sll_search(Node head, Data searchData, int (*compare)(const Data a, const Data b))
+Node sll_search(SinglyLinkedList list, Data searchData, int (*compare)(const Data a, const Data b))
 {
-  Node current = head;
+  Node current = list.head;
   while (current != NULL)
   {
     if (compare(current->data, searchData))
@@ -62,4 +72,35 @@ SinglyLinkedList *sll_search(Node head, Data searchData, int (*compare)(const Da
     current = current->next;
   }
   return NULL;
+}
+
+void sll_delete(SinglyLinkedList *list, Node targetNode)
+{
+  Node current = list->head;
+  Node previous = NULL;
+
+  // Traverse the list to find the node to delete
+  while (current != NULL)
+  {
+    if (current == targetNode)
+    {
+      printf("found!\n");
+      // Found the node to delete
+      if (previous == NULL)
+      {
+        // If the node to delete is the head, update the head
+        list->head = current->next;
+      }
+      else
+      {
+        // If the node to delete is not the head, bypass it
+        previous->next = current->next;
+      }
+
+      free(current); // Free the memory of the deleted node
+      return;
+    }
+    previous = current;
+    current = current->next;
+  }
 }
