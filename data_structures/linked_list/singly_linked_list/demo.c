@@ -11,10 +11,18 @@ struct PhoneData
 
 typedef struct PhoneData Elementtype;
 
-void print_data_function(Data data)
+void print_phone_data_function(Data data)
 {
   Elementtype *element = (Elementtype *)data;
   printf("Model: %s, Price: %d\n", element->model, element->price);
+}
+
+int search_phone_by_model(const Data a, const Data b)
+{
+  const Elementtype *element = (const Elementtype *)a;
+  const char *strB = (const char *)b;
+
+  return (strcmp(element->model, strB) == 0);
 }
 
 int main()
@@ -32,7 +40,8 @@ menu:
 {
   printf("   MENU\n");
   printf(" 1. Prepend\n");
-  printf(" 2. Quit\n");
+  printf(" 2. Print\n");
+  printf(" 3. Search\n");
   int c;
   printf("Your selection : ");
   scanf("%d", &c);
@@ -51,7 +60,17 @@ menu:
   case 2:
   {
     printf("\n");
-    sll_print(head, print_data_function);
+    sll_print(head, print_phone_data_function);
+    printf("____________________________________________\n");
+    goto menu;
+    ;
+  }
+  case 3:
+  {
+    printf("\n");
+    Node temp = NULL;
+    temp = sll_search(head, "iPhone 13 Pro", search_phone_by_model);
+    sll_get_node_data(temp, print_phone_data_function);
     printf("____________________________________________\n");
     goto menu;
     ;
