@@ -4,15 +4,32 @@ Sort a subarray $A[p:r]$, starting with the entire array $A[0:n-1]$, recursing d
  - **Conquer** by sorting $A[p:q]$ and $A[q+1:r]$ recursively using merge sort
  - **Combine** (Merge) by merging 2 sorted subarray $A[p:q]$ and $A[q + 1:r]$ back into $A[p:r]$
 
-## Psuedo Code and Analysis
+## MERGE-SORT procedure
+The procedure MERGE-SORT(A, p, r) sorts the elements in the subarray $A[p:r]$
+ - If $p = r$, the subarray has just 1 element and therefore is sorted
+ - Otherwise, $p < r$, MERGE-SORT runs the divide, conquer and combine steps.
+ ```
+MERGE-SORT(A, p, r)
+1   if p >= r // zero or one element?
+2       return
+3   q = [(p + r)/2] // midpoint of A[p:r]
+4   MERGE-SORT(A, p, q) // recursively sort A[p:q]
+5   MERGE-SORT(A, q + 1, r) // recursively sort A[q + 1:r]
+6   // Merge A[p:q] and A[q + 1:r] into A[p:r]
+7   MERGE(A, p, q, r)
+```
+
+## Psuedo Code and Analysis for the MERGE procedure
 I really love the ```MERGE procedure``` explanation in the book
 
-Basically, you have two piles of cards *face up* on a table. Each pile is sorted, with the smallest-value cards on top. You wish to merge the two piles into a single sorted output pile, which is to be *face down* on the table.
+Basically, you have two piles of cards *face up* on a table. Each pile is sorted, with the smallest-value cards on top. You wish to merge the two piles into a single sorted output pile, which is to be *face down* on the table (so the newly created pile will later be *face up* with smallest-value cards on top).
+
+PART 1:
 - Choosing the smaller of the two cards on top of the *face-up* piles
 - Removing it from its pile - which exposes a new top card 
 - Placing this card *face down* onto the output pile
-
-Repeat this step until one input pile is empty, at which time you can just take the remaining input pile and flip over the entire pile, placing it face down onto the output pile
+PART 2:
+- Repeat this step until one input pile is empty, at which time you can just take the remaining input pile and flip over the entire pile, placing it face down onto the output pile
 
 ```
 MERGE(A, p, q, r)
@@ -28,6 +45,8 @@ MERGE(A, p, q, r)
 10  k = p   // k indexes the location of A to fill
 11  // As long as each of the arrays L and R contains an unmerged element,
     // copy the smallest unmerged element back into A[p:r].
+    // PART 1 of the MERGE procedure -> choose the smaller one from both piles until
+    // one pile is empty!
 12  while i < n_l an j < n_r
 13      if L[i] <= R[j]
 14          A[k] = L[i]
@@ -38,6 +57,7 @@ MERGE(A, p, q, r)
 19  // Having gone through one of L and R entirely, since both L and R are sorted, 
     // the remainder of the other array will only contains sorted items in the right 
     // order! copy the remainder of the other to the end of A[p:r]
+    // PART 2 of the MERGE procedure -> take all cards of remaining input pile!
 20  while i < n_l
 21      A[k] = L[i]
 22      i = i + 1
@@ -53,19 +73,6 @@ MERGE procedure runs in $\Theta(n)$ time, where $n = r - p + 1$:
  - The for loops of lines 4-7 take $\Theta(n_{\scriptstyle L} + n_{\scriptstyle R}) = \Theta(n)$ time
  - All 3 while loops of lines 12-27 will eventually copies all items from L and R back into A and every value is copied exactly once. Therefore, total time spent in these loops is $\Theta(n)$
 
-The procedure MERGE-SORT(A, p, r) sorts the elements in the subarray $A[p:r]$
- - If $p = r$, the subarray has just 1 element and therefore is sorted
- - Otherwise, $p < r$, MERGE-SORT runs the divide, conquer and combine steps.
- ```
-MERGE-SORT(A, p, r)
-1   if p >= r // zero or one element?
-2       return
-3   q = [(p + r)/2] // midpoint of A[p:r]
-4   MERGE-SORT(A, p, q) // recursively sort A[p:q]
-5   MERGE-SORT(A, q + 1, r) // recursively sort A[q + 1:r]
-6   // Merge A[p:q] and A[q + 1:r] into A[p:r]
-7   MERGE(A, p, q, r)
-```
 
 ### Analysis of Divide-and-conquer
 let $T(n)$ be the worst-case running time on a problem of size $n$. If the problem size is small enough, say $n < n_{\scriptstyle 0}$ ($n_{\scriptstyle 0} > 0$), the *straightforward solution* take contsant time $\Theta(1)$ 
