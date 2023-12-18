@@ -1,8 +1,8 @@
-# Merge sort
+# Merge sort Recursive
 Sort a subarray $A[p:r]$, starting with the entire array $A[0:n-1]$, recursing down to smaller and smaller subarrays (the starting array $A[0:n-1]$ will be divided to a point when it becomes $A[p:r]$)
  - **Divide** $A[p:r]$ into $A[p:q]$ and $A[q+1:r]$ with $q$ is the midpoint of $A[p:r]$
  - **Conquer** by sorting $A[p:q]$ and $A[q+1:r]$ recursively using merge sort
- - **Combine** (Merge) by merging 2 sorted subarray $A[p:q]$ and $A[q + 1:r]$ back into $A[p:r]$
+ - **Combine** (Merge) Recursively merging 2 sorted subarray $A[p:q]$ and $A[q + 1:r]$, returning a new merged array
 
 ## MERGE-SORT procedure
 The procedure MERGE-SORT(A, p, r) sorts the elements in the subarray $A[p:r]$
@@ -146,6 +146,18 @@ The levels above the leaves each cost $c_{\scriptstyle 2}n$, and the leaf level 
 > As the input size n becomes large, the logarithmic term will dominate the linear term ($c_{\scriptstyle 1}n$). Hence $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \Theta(n\log_2 n)$
 
 The merging step always takes $\Theta(n)$ time, no matter the specific elements being merged, because it involves comparing and copying each element exactly once from the two subarrays to the merged result. This is why the worst-case time complexity for merge sort is determined by the number of merge operations, which is proportional to the depth of the recursion tree (which is $\log_2 n$). Therefore the worst-case time complexity is $\Theta(n\log_2 n)$
+
+## Notes
+Given an array A, this this example, the array A has the type int
+```
+int* head = (int *)malloc(sizeof(int));
+memcpy(head, A, sizeof(int));
+```
+is equivalent to
+```
+int *head = (int *)malloc(sizeof(int));
+*head = A[0];
+```
 
 ## Test Drive
 Since this algorithm run time complexity depends on the depth of the recursion tree (input quantity), the test drive will be simple (taken from the famous github Algorithm/C repo)

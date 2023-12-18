@@ -38,14 +38,21 @@ FINAL:   2  4  5  7
 ## Analysis
 The running time of the algorithm is the sum of running times for each statement executed. A statement that takes $c_{\scriptstyle k}$ steps to execute and executes $m$ times contributes $c_{\scriptstyle k}m$ to the total running time.
 
-$c_{\scriptstyle k}$: number of steps to execute statement $k$
+$c_{\scriptstyle k}$: number of steps to execute statement $k$ (or just consider it the time needed to execute line $k$)
 
-$t_{\scriptstyle t}$: the number of times the while loop executed for that value of $i$ ($i = 2,3,...,n$)
+$t_{\scriptstyle j}$: the number of times the while loop executed for that value of $j$ ($j = 2,3,...,n$). Because the while might not loop $n$ times, it depends on $i$. For example, if $j = n$ (the last item) and the while loop condition holds TRUE -> it will loop from $n$ to 1 ($n$ times)
 
 The running time of insertion sort on an input of $n$ values:
-$$T(n) = c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n - 1) + c_{\scriptstyle 5}\sum_{i=2}^{n}t_{\scriptstyle i} + c_{\scriptstyle 6}\sum_{i=2}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 7}\sum_{i=2}^{n}(t_{\scriptstyle i} - 1) + c_{\scriptstyle 8}(n - 1)$$
+$$T(n) = c_{\scriptstyle 1}n + c_{\scriptstyle 2}(n - 1) + c_{\scriptstyle 4}(n - 1) + c_{\scriptstyle 5}\sum_{j=2}^{n}t_{\scriptstyle j} + c_{\scriptstyle 6}\sum_{j=2}^{n}(t_{\scriptstyle j} - 1) + c_{\scriptstyle 7}\sum_{j=2}^{n}(t_{\scriptstyle j} - 1) + c_{\scriptstyle 8}(n - 1)$$
 
-The **best case** occurs when the array is already sorted. In this case, each time that line 5 executes, the value of key ($A[i]$ origin value) is already greater than or equal all values in $A[0:i - 1]$, so that the while loop of lines 5-7 always exits upon the first test in line 5. Therefore $t_{\scriptstyle i} = 1$ for $i = 1,2,...,n$
+You might wonder why line 1 takes $n$ times not $(n - 1)$. 
+
+When a for or while loop exits in the usual way, because the test in the loop header comes up FALSE, the test is executed one time more than the loop body. -> Same thing for $t_{\scriptstyle j}$
+
+### Best case
+**Best case: the array is already sorted**
+
+In this case, each time that line 5 executes, the value of key ($A[i]$ origin value) is already greater than or equal all values in $A[0:i - 1]$, so that the while loop of lines 5-7 always exits upon the first test in line 5. Therefore $t_{\scriptstyle j} = 1$ for $j = 1,2,...,n$
 
 Best-case running time:
 
@@ -58,7 +65,10 @@ $$
 
 Best-case running time of the algorithm is $\Theta(n)$
 
-The **worst case** arises when the array is in reverse sorted order. The procedure must compare each element $A[i]$ with each element in the entire sorted subarray $A[0:i - 1]$. The procedure find that $A[j] > key$ every time in line 5, and the while loop exits only when $j$ reaches 0 so $t_{\scriptstyle i} = i$ for $i = 2,3,...,n$
+### Worst case
+**Worst case: the array is in reverse sorted order**
+
+The procedure must compare each element $A[i]$ with each element in the entire sorted subarray $A[0:i - 1]$. The procedure find that $A[j] > key$ every time in line 5, and the while loop exits only when $j$ reaches 0 so $t_{\scriptstyle i} = i$ for $i = 2,3,...,n$
 
 $$
 \begin{align*}
