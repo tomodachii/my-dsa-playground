@@ -66,24 +66,5 @@ int main(void)
 
   // free(A);
   // free(B);
-  // int m_concat = 4, n_concat = 0;
-  // int C[4] = {1, 2, 3, 4};
-  // int D[2] = {5, 6};
-  // int *F = NULL;
-  // int *E = array_concat_i_2(C, 4, F, 0);
-  // printf("E: ");
-  // for (i = 0; i < m_concat + n_concat; i++)
-  // {
-  //   printf("%d ", E[i]);
-  // }
-
-  // int G[4] = {1, 4};
-
-  // int *H = array_shift_i2(G, 4);
-  // for (i = 0; i < 2 - 1; i++)
-  // {
-  //   printf("%d ", H[i]);
-  // }
-  // printf("\n");
   return 0;
 }
