@@ -3,7 +3,6 @@
 #include <string.h>
 #include "singly_linked_list.h"
 
-// if we pass list instead of the SinglyLinkedList pointer *list, the list.head = NULL; will not set the head of the list to NULL since it is passed by value
 void sll_init(SinglyLinkedList *list)
 {
   list->head = NULL;
