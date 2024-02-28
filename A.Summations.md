@@ -12,7 +12,7 @@ The value of a **finite** series:
 
 $$
 \begin{align*}
-S = a_{\scriptstyle 1} + a_{\scriptstyle 2} + ... a_{\scriptstyle n} = \sum_{k=1}^{n}a_{\scriptstyle k}
+S = a_{\scriptstyle 1} + a_{\scriptstyle 2} + \dots a_{\scriptstyle n} = \sum_{k=1}^{n}a_{\scriptstyle k}
 \end{align*}
 $$
 
