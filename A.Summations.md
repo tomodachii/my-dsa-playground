@@ -28,7 +28,7 @@ The value of an **infinite** series:
 
 $$
 \begin{align*}
-S &= a_{\scriptstyle 1} + a_{\scriptstyle 2} + ... = \sum_{k=1}^{\infty}a_{\scriptstyle k} \\
+S &= a_{\scriptstyle 1} + a_{\scriptstyle 2} + \dots = \sum_{k=1}^{\infty}a_{\scriptstyle k} \\
 &= \lim _{n \to \infty}\sum_{k=1}^{n}a_{\scriptstyle k}
 \end{align*}
 $$
@@ -41,7 +41,7 @@ For real $x \neq 1$, the summation
 
 $$
 \begin{align*}
-S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = 1 + x + x^2 + ... + x^n
+S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = 1 + x + x^2 + \dots + x^n
 \end{align*}
 $$
 
