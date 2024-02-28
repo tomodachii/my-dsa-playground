@@ -12,7 +12,7 @@ $$
 Multiplying both sides by $x$ gives
 
 $$
-\begin{equation}
+\begin{equation} \tag{1}
 \begin{split}
 &xS_{\scriptstyle n}= x + x^2 + x^3 + \dots + x^{n+1}
 \end{split}
