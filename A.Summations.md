@@ -29,7 +29,7 @@ The value of an **infinite** series:
 $$
 \begin{align*}
 S &= a_{\scriptstyle 1} + a_{\scriptstyle 2} + \dots = \sum_{k=1}^{\infty}a_{\scriptstyle k} \\
-&= \lim _{n \to \infty}\sum_{k=1}^{n}a_{\scriptstyle k}
+&= \lim_{n \to \infty}\sum_{k=1}^{n}a_{\scriptstyle k}
 \end{align*}
 $$
 
