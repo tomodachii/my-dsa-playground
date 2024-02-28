@@ -13,9 +13,16 @@ Multiplying both sides by $x$ gives
 
 $$
 \begin{equation}
-\begin{align*}
-&xS_{\scriptstyle n}= x + x^2 + x^3 ... + x^{n+1}
-\end{align*}
+\begin{split}
+&xS_{\scriptstyle n}= x + x^2 + x^3 + \dots + x^{n+1}
+\end{split}
 \end{equation}
 $$
 
+$$
+\begin{equation}
+\begin{split}
+&xS_{\scriptstyle n}= x + x^2 + x^3 + \dots + x^{n+1}
+\end{split}
+\end{equation}
+$$
