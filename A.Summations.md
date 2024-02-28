@@ -30,12 +30,12 @@ which means $\lim _{n \to \infty}\sum_{k=1}^{n}a_{\scriptstyle k}$
 For real $x \neq 1$, the summation
 $$
 \begin{align*}
-\sum_{k=0}^{n}x^k = 1 + x + x^2 + ... + x^n
+S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = 1 + x + x^2 + ... + x^n
 \end{align*}
 $$
 is a **geometric series** and has the value
 $$
 \begin{align*}
-\sum_{k=0}^{n}x^k = 1 + x + x^2 + ... + x^n
+S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = \sum_{}
 \end{align*}
 $$
