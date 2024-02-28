@@ -49,6 +49,8 @@ is a **geometric series** and has the value
 
 $$
 \begin{align*}
-S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = \sum_{}
+S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = \frac{x^{n+1} - 1}{(x-1)}
 \end{align*}
 $$
+
+[Proof](/proofs/geometric_series.md)
