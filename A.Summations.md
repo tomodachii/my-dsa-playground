@@ -9,6 +9,7 @@ A.2 Useful techniques for bounding summations
 Given a sequence $a_{\scriptstyle 1}, a_{\scriptstyle 2}, ... a_{\scriptstyle n}$, $n \in \mathbb{Z}^{+}$
 
 The value of a **finite** series:
+
 $$
 \begin{align*}
 S = a_{\scriptstyle 1} + a_{\scriptstyle 2} + ... a_{\scriptstyle n} = \sum_{k=1}^{n}a_{\scriptstyle k}
@@ -24,6 +25,7 @@ $$
 Given an **infinite sequence** $a_{\scriptstyle 1}, a_{\scriptstyle 2}, ... $
 
 The value of an **infinite** series:
+
 $$
 \begin{align*}
 S &= a_{\scriptstyle 1} + a_{\scriptstyle 2} + ... = \sum_{k=1}^{\infty}a_{\scriptstyle k} \\
@@ -36,12 +38,15 @@ $$
 
 ### Geometric series
 For real $x \neq 1$, the summation
+
 $$
 \begin{align*}
 S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = 1 + x + x^2 + ... + x^n
 \end{align*}
 $$
+
 is a **geometric series** and has the value
+
 $$
 \begin{align*}
 S_{\scriptstyle n}=\sum_{k=0}^{n}x^k = \sum_{}
