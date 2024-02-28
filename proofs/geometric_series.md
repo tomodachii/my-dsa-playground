@@ -1,7 +1,7 @@
 # Proofs for other sections
 
 ### Geometric series formula
-Proof for the [geometric formula](summations.md/#geometric-series)
+Proof for the [geometric formula](../summations.md/#geometric-series)
 
 $$
 \begin{align*}
