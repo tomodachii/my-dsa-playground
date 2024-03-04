@@ -140,7 +140,33 @@ lgn + 1        |     |         |     |
   |                       n
   v
 ```
-Since we're assuming that n is an exact power of 2, the number of levels of a recursion tree with $2^i$ leaves is $log_2 2^i + 1$
+Consider a recursion tree with i levels
+
+There is $2^0$ leaf (1 leaf) at level 1.
+
+There are $2^1$ leaves (2 leaves) at level 2.
+
+There are $2^2$ leaves (4 leaves) at level 3.
+
+There are $2^3$ leaves (8 leaves) at level 4.
+
+...
+
+There are $2^{i-1}$ leaves at level i.
+
+At each level of recursion, the problem size (number of elements) is halved. Therefore, after i levels of recursion, the problem size becomes $n/(2^{i-1})$.
+
+We want to find out how many levels of recursion are needed until the problem size reduces to 0 (i.e., we reach the base case). So, we solve for k in the equation $n/(2^{i-1}) = 0$.
+
+$$
+\begin{aligned}
+n = 2^{i-1} &\iff log_2{n} = log_2{2^{i-1}} \\
+&\iff log_2{n} = i - 1 \\
+&\iff i = log_2{n} + 1
+\end{aligned}
+$$
+
+Since we're assuming that n is an exact power of 2, the number of levels __i__ is $log_2{n} + 1=log_2{2^{i-1}} + 1$.
 
 The levels above the leaves each cost $c_{\scriptstyle 2}n$, and the leaf level costs $c_{\scriptstyle 1}n$, for a total cost of $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \Theta(n\log_2 n)$
 > As the input size n becomes large, the logarithmic term will dominate the linear term ($c_{\scriptstyle 1}n$). Hence $c_{\scriptstyle 2}n\log_2 n + c_{\scriptstyle 1}n = \Theta(n\log_2 n)$
