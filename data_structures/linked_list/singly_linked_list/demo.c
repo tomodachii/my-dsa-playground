@@ -9,17 +9,17 @@ struct PhoneData
   int price;
 };
 
-typedef struct PhoneData Elementtype;
+typedef struct PhoneData ElementType;
 
 void print_phone_data_function(Data data)
 {
-  Elementtype *element = (Elementtype *)data;
+  ElementType *element = (ElementType *)data;
   printf("Model: %s, Price: %d\n", element->model, element->price);
 }
 
 int search_phone_by_model(const Data a, const Data b)
 {
-  const Elementtype *element = (const Elementtype *)a;
+  const ElementType *element = (const ElementType *)a;
   const char *strB = (const char *)b;
 
   return (strcmp(element->model, strB) == 0);
@@ -27,11 +27,11 @@ int search_phone_by_model(const Data a, const Data b)
 
 int main()
 {
-  Elementtype phone1;
+  ElementType phone1;
   strcpy(phone1.model, "iPhone 13 Pro");
   phone1.price = 1099;
 
-  Elementtype phone2;
+  ElementType phone2;
   strcpy(phone2.model, "Samsung Galaxy S21");
   phone2.price = 899;
 
